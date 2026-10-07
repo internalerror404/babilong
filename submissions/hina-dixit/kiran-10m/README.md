@@ -1,9 +1,9 @@
 # Kiran-10M
-## BABILong results — frozen Qwen3.5-4B reader
+## BABILong results — frozen 4B reader
 
 **Results submission for leaderboard review; proprietary implementation is not released.**
 
-Kiran-10M is a proprietary memory-augmented question-answering pipeline. It recorded **84.4% at 1M** and **84.0% at 10M** on BABILong QA1–QA5 with a frozen Qwen3.5-4B reader. These are system-level results; the nominal input length is not the reader’s native attention window.
+Kiran-10M is a proprietary memory-augmented question-answering pipeline. It recorded **84.4% at 1M** and **84.0% at 10M** on BABILong QA1–QA5 with a frozen 4B reader. These are system-level results; the nominal input length is not the reader’s native attention window.
 
 | Nominal input length | QA1 | QA2 | QA3 | QA4 | QA5 | QA1–QA5 mean |
 |---|---:|---:|---:|---:|---:|---:|
@@ -19,8 +19,8 @@ The complete submitted grid is in [RESULTS.md](RESULTS.md) and [RESULTS.csv](RES
 
 | Field | Value |
 |---|---|
-| Reader | `Qwen/Qwen3.5-4B` |
-| Reader revision | `851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a` |
+| Reader | Frozen 4B reader; base-model identity withheld |
+| Reader revision | Withheld from the public submission |
 | Dataset | `RMT-team/babilong` |
 | Dataset revision | `ee0d588794c7ac098062ee0d247c733d62e94fe2` |
 | Inference | Custom pipeline; task-adapted deterministic preprocessing |
@@ -49,6 +49,8 @@ Python 3.10+ and its standard library are sufficient. The verifier checks the su
 Prediction files are located at `babilong_evals/hina-dixit/Kiran-10M/`. Summary CSVs remain outside that prediction directory. Scoped `.gitattributes` files preserve artifact bytes when Git would otherwise normalize line endings. Repository-collector testing uses commit `7a6efee29f5cac03c3c410e6799c80fd2ffe3610`; that does not assert identical live Space code or leaderboard acceptance.
 
 ## What is and is not released
+
+Base-model identity and exact checkpoint revision are intentionally withheld in this release. The public verifier checks saved outputs and package integrity; it does not authenticate the undisclosed reader. Eligibility under this disclosure boundary is for the benchmark maintainers to determine.
 
 Per-sample predictions, evaluation metadata, record-index mappings, result tables, checksums, the public benchmark metric, and a score verifier are provided. Proprietary inference code, extraction rules, prompt text, memory schemas, routing logic, weights, and internal traces are not included. Rescoring verifies the saved scores, not the proprietary generation process. Any additional reproduction arrangement requires separate agreement.
 

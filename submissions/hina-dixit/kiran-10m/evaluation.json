@@ -1,6 +1,6 @@
 {
-  "schema": "KIRAN_BABILONG_SUBMISSION_V3",
-  "prepared_date": "2026-10-06",
+  "schema": "KIRAN_BABILONG_SUBMISSION_V5",
+  "prepared_date": "2026-10-07",
   "artifact_purpose": "primary_leaderboard_review_submission",
   "display_name": "Kiran-10M",
   "submitter": "Hina Dixit",
@@ -65,14 +65,16 @@
     "exact_hf_configuration_split_mapping": "not_recorded_beyond_snapshot_and_local_eval_files"
   },
   "reader": {
-    "model_id": "Qwen/Qwen3.5-4B",
-    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "model_id": null,
+    "revision": null,
     "dtype_reported": "bfloat16",
     "condition_reported": "frozen publisher checkpoint",
-    "identity_basis": "execution-side acquisition receipt and launcher-path record; source-investigator-reported weight checks",
+    "identity_basis": "Exact base-model identity and checkpoint revision are retained in private execution records and are not disclosed in this public release.",
     "original_launcher_hash_pinned": false,
     "contemporaneous_adapter_inventory": "not_recorded",
-    "adapter_evidence": "Later inspection found no adapter-loading code, adapter-loading log lines, or adapter files in the examined sources."
+    "adapter_evidence": "Later inspection found no adapter-loading code, adapter-loading log lines, or adapter files in the examined sources.",
+    "identity_disclosure": "withheld",
+    "parameter_class": "4B"
   },
   "training_condition_reported": "No additional gradient-based training or fine-tuning for this evaluated pipeline.",
   "training_evidence_limit": "Supporting source inspection is not a comprehensive training-history audit; upstream pretraining contamination is unknown.",
@@ -129,8 +131,8 @@
     "configuration_freeze": "Campaign records a configuration freeze before evaluation-length runs; the earlier attempted invocation is disclosed."
   },
   "input_length_semantics": "nominal pipeline input length, not native reader attention window",
-  "verification_scope": "saved prediction integrity, row mappings and score recalculation; no model execution or independent runtime attestation",
-  "implementation_release": "Proprietary implementation, prompts, extraction rules, schemas, inference traces and weights are not included.",
+  "verification_scope": "Saved prediction integrity, row mappings and score recalculation only; no public verification of reader identity, no model execution, and no independent runtime attestation.",
+  "implementation_release": "Base-model identity and checkpoint revision, proprietary implementation, prompts, extraction rules, schemas, inference traces and weights are not included.",
   "leaderboard_acceptance": "not_claimed",
   "task_adaptation": "task-adapted deterministic preprocessing"
 }

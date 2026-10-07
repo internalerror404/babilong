@@ -1,10 +1,10 @@
 # Evaluation protocol and provenance scope
 
-**Kiran-10M | Submitted by Hina Dixit | September 2026 campaign | Submission assembled 2026-10-06**
+**Kiran-10M | Submitted by Hina Dixit | September 2026 campaign | Disclosure revision assembled 2026-10-07**
 
 ## Identity and metric
 
-Reader: `Qwen/Qwen3.5-4B` at revision `851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a`, reported dtype bfloat16. Dataset: `RMT-team/babilong` at snapshot `ee0d588794c7ac098062ee0d247c733d62e94fe2`, using the campaign's evaluation files. The inference pipeline is custom; only the benchmark's scoring metric is represented as unmodified official code.
+Reader: frozen 4B reader, reported dtype bfloat16. Base-model identity and exact checkpoint revision are intentionally withheld from this public submission; they remain in private execution records. Dataset: `RMT-team/babilong` at snapshot `ee0d588794c7ac098062ee0d247c733d62e94fe2`, using the campaign's evaluation files. The inference pipeline is custom; only the benchmark's scoring metric is represented as unmodified official code.
 
 Scorer: `compare_answers`, `booydar/babilong` commit `7a6efee29f5cac03c3c410e6799c80fd2ffe3610`, SHA-256 `f77c139809690588f85ed29c1c93f22394c6b48b1fdc8afeaaa5d0969d973daf`. The scorer shipped in this submission matches the metric hash recorded for the historical campaign. No corrected or more permissive scoring rule is substituted.
 
@@ -28,7 +28,7 @@ No prediction is removed, corrected, or regenerated during submission packaging.
 
 ## Verification scope and limitations
 
-The accompanying verifier recalculates scores from the saved predictions, checks their byte hashes, checks row mappings, and checks the complete submitted task/length grid. The preparation review also reconciled these predictions with the supplied original-run inventory. This is score and artifact verification, not independent regeneration of answers or reconstruction of proprietary inference.
+The accompanying verifier recalculates scores from the saved predictions, checks their byte hashes, checks row mappings, and checks the complete submitted task/length grid. The preparation review also reconciled these predictions with the supplied original-run inventory. This is score and artifact verification, not verification of the undisclosed reader identity, independent regeneration of answers, or reconstruction of proprietary inference.
 
 The campaign inventory records a dataset-file hash and zero-based sample indices for each cell. Those file hashes refer to the campaign-local evaluation JSON files; they are not asserted to be the upstream repository's raw file digests. Per-sample full-context hashes were not recorded. The question/target/output record hashes in `sample_indices.jsonl` do not hash the full input context.
 

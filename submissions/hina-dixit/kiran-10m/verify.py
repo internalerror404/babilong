@@ -130,8 +130,11 @@ def verify(root: Path) -> dict:
     require(evaluation['configuration_id'] == manifest['configuration_id'], 'Metadata configuration mismatch')
     require(evaluation['scope']['cell_count'] == manifest['cell_count'], 'Metadata cell-count mismatch')
     require(evaluation['scope']['prediction_rows'] == manifest['prediction_rows'], 'Metadata row-count mismatch')
-    require(evaluation['reader']['model_id'] == 'Qwen/Qwen3.5-4B', 'Reader ID mismatch')
-    require(evaluation['reader']['revision'] == '851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a', 'Reader revision mismatch')
+    # These checks validate the public disclosure state, not the private reader identity.
+    require(evaluation['reader']['model_id'] is None, 'Reader ID must be withheld')
+    require(evaluation['reader']['revision'] is None, 'Reader revision must be withheld')
+    require(evaluation['reader']['identity_disclosure'] == 'withheld', 'Reader disclosure mismatch')
+    require(evaluation['reader']['parameter_class'] == '4B', 'Reader parameter-class mismatch')
     require(evaluation['dataset']['revision'] == 'ee0d588794c7ac098062ee0d247c733d62e94fe2', 'Dataset revision mismatch')
     require(evaluation['metric']['sha256'] == METRIC_SHA256, 'Evaluation metric mismatch')
 
@@ -176,7 +179,8 @@ def verify(root: Path) -> dict:
             'hashed_files':len(expected),'cells':len(records),
             'prediction_rows':manifest['prediction_rows'],'metric_sha256':METRIC_SHA256,
             'mean_qa1_qa5_pct':averages,
-            'scope':'Artifact integrity and score recalculation only; no inference rerun or leaderboard acceptance.'}
+            'reader_identity_disclosure':'withheld', 'reader_identity_verified':False,
+            'scope':'Artifact integrity and score recalculation only; no reader-identity verification, inference rerun or leaderboard acceptance.'}
 
 
 def main() -> int:

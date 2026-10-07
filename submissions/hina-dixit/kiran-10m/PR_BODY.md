@@ -1,6 +1,6 @@
 ## Summary
 
-This PR, submitted by **Hina Dixit**, adds **Kiran-10M**, a proprietary memory-augmented question-answering pipeline with a frozen **Qwen3.5-4B reader**, for BABILong leaderboard review.
+This PR, submitted by **Hina Dixit**, adds **Kiran-10M**, a proprietary memory-augmented question-answering pipeline with a frozen **4B reader**, for BABILong leaderboard review.
 
 | Nominal input length | QA1 | QA2 | QA3 | QA4 | QA5 | QA1–QA5 mean |
 |---|---:|---:|---:|---:|---:|---:|
@@ -12,7 +12,7 @@ The primary score is the mean over QA1–QA5, with 100 observations per task and
 
 ## System and evaluation
 
-- Reader: `Qwen/Qwen3.5-4B` @ `851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a`.
+- Reader: frozen **4B language-model reader**. Base-model identity and exact checkpoint revision are **withheld from public disclosure**.
 - Dataset: `RMT-team/babilong` @ `ee0d588794c7ac098062ee0d247c733d62e94fe2`.
 - Custom inference pipeline with task-adapted deterministic preprocessing; input-length labels refer to the pipeline, not native reader attention.
 - Recorded training condition: no additional gradient-based training or fine-tuning for this evaluated pipeline. This is not a claim of no task-specific engineering or an upstream contamination audit.
@@ -41,6 +41,6 @@ The verifier requires Python 3.10+ only and makes no model or network calls. Sav
 
 ## Review request and implementation boundary
 
-Proprietary implementation details, inference code, prompts and weights are not released. Please review this as a task-adapted memory-pipeline result and advise on its appropriate classification and any additional verification requirements under these disclosed conditions. Any additional access arrangement would require separate agreement. The directory placement is proposed for this PR and can be adjusted to the maintainers' convention without changing prediction contents.
+Base-model identity, exact checkpoint revision, proprietary implementation details, inference code, prompts and weights are not released. Please review this as a task-adapted memory-pipeline result and advise on its appropriate classification and any additional verification requirements under these disclosed conditions and this base-model nondisclosure boundary. Any additional access arrangement would require separate agreement. The directory placement is proposed for this PR and can be adjusted to the maintainers' convention without changing prediction contents.
 
 Submitted by Hina Dixit.
